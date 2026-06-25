@@ -41,7 +41,11 @@
       >
     </div>
     <div class="card quick-actions">
-      
+      <div class="section-title">快捷入口</div>
+      <van-grid :column-num="2" :gutter="12">
+        <van-grid-item @click="goPagee('/chat')" icon="chat-o" text="A对话" />
+        <van-grid-item @click="goPagee('/profile')" icon="user-o" text="我的" />
+      </van-grid>
     </div>
 
     <van-popup v-model:show="showCityPicker" position="bottom" round>
@@ -56,6 +60,13 @@
 </template>
 <script setup>
 import { reactive, ref } from "vue";
+import { useRouter } from "vue-router";
+const router = useRouter();
+
+// 跳转页面
+const goPagee = (page) => {
+  router.push(page);
+};
 // 表单数据
 const showCityPicker = ref(false);
 // 表单数据
