@@ -6,7 +6,7 @@
       text="基于 AI 的智能景点介绍与行程规划系统"
       style="margin-bottom: 10px"
     />
-    <div class="card ">
+    <div class="card">
       <van-field
         style="background: #f7f8fa; border-radius: 8px; margin-bottom: 10px"
         is-link
@@ -47,11 +47,17 @@
         <van-grid-item @click="goPagee('/profile')" icon="user-o" text="我的" />
       </van-grid>
     </div>
-        <div class="card popular-destinations">
+    <div class="card popular-destinations">
       <div class="section-title">热门目的</div>
       <van-grid :column-num="4" :gutter="8">
-        <van-grid-item @click="slectTagCity(item)" v-for="item in popularCities" :key="item" >
-          <div :class="{active: item === formData.city}" class="city-tag">{{item}}</div>
+        <van-grid-item
+          @click="slectTagCity(item)"
+          v-for="item in popularCities"
+          :key="item"
+        >
+          <div :class="{ active: item === formData.city }" class="city-tag">
+            {{ item }}
+          </div>
         </van-grid-item>
       </van-grid>
     </div>
@@ -83,7 +89,16 @@ const formData = reactive({
   budget: "",
   days: "",
 });
-const popularCities=["北京","上海","广州","深圳","成都","西安","重庆","杭州"]
+const popularCities = [
+  "北京",
+  "上海",
+  "广州",
+  "深圳",
+  "成都",
+  "西安",
+  "重庆",
+  "杭州",
+];
 const isLoading = ref(false);
 const allCities = ref([
   "北京",
@@ -119,7 +134,7 @@ const handleSubmit = () => {
 };
 const slectTagCity = (item) => {
   formData.city = item;
-}
+};
 </script>
 <style scoped>
 .search-card {
@@ -133,14 +148,13 @@ const slectTagCity = (item) => {
   border-radius: 16px;
   background: #f7f8fa;
   color: #333;
-  transition: all 0.3s ;
+  transition: all 0.3s;
 }
 .city-tag:hover {
   background: #e8ebee;
 }
-.city-tag.active{
-  background: #007AFF;
+.city-tag.active {
+  background: #007aff;
   color: #fff;
 }
 </style>
-
